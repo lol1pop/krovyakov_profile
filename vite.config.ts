@@ -6,6 +6,7 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/krovyakov_profile/',
+  publicDir: 'assets/static',
   plugins: [vue()],
   resolve: {
     alias: {
