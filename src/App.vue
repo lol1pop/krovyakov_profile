@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import MainPage from '@/views/MainPage.vue';
+import Header from '@/components/Header.vue';
 </script>
 
 <template>
   <div class="layout">
     <main class="container">
       <header>
+        <Header/>
       </header>
       <MainPage/>
     </main>
