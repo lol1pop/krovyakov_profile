@@ -8,9 +8,7 @@
               <br>
               <span class="info__time">25/8</span>
               <span class="info__position">
-<!--                <vue-typed-js :strings="['BackEnd dev']" :cursorChar="'_'" :startDelay="1000">-->
-<!--                  <span class="typing"></span>-->
-<!--                </vue-typed-js>-->
+                  <span id="typing"></span>
               </span>
             </span>
           <div class="info__about"></div>
@@ -30,8 +28,10 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from 'vue';
+import {defineComponent, ref, reactive, onMounted} from 'vue';
 import { daysHavePassed } from '@/utils/dataTimeUtils'
+import type { TypedOptions } from "typed.js";
+import Typed from "typed.js";
 
 export default defineComponent({
   name: 'Intro',
@@ -40,6 +40,19 @@ export default defineComponent({
     const afterDays = ref<number>(Math.trunc(daysHavePassed(dataUpdate)))
     
     const cvFile = new URL('../assets/static/CV_denis_krovyakov.pdf', import.meta.url).href
+  
+    const typedConfig: TypedOptions = {
+      strings: ['BackEnd dev'],
+      loop: false,
+      typeSpeed: 30,
+      startDelay: 1000,
+      cursorChar: '_'
+    };
+
+    onMounted(() => {
+      new Typed("#typing", typedConfig);
+    })
+
     return { afterDays, cvFile }
   },
 })
